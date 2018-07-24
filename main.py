@@ -2,13 +2,13 @@ import subprocess
 
 import schedule
 import time
-
+import os
 
 def job():
-    subprocess.check_call(['speedtest-cli', '--csv', '>>', 'output.log'])
+    os.system('speedtest-cli --csv >> /home/ubuntu/alfred/output.log')
 
-schedule.every(20).seconds.do(job)
+schedule.every(60).seconds.do(job)
 
 while True:
     schedule.run_pending()
-    time.sleep(30)
+    time.sleep(60)
